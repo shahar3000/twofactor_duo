@@ -11,6 +11,9 @@ Add your duo configuration to your Nextcloud's `config/config.php` fils:
     'AKEY' => '123',
   ],
 ```
+
+AKEY can be generated using the command ```dd if=/dev/random count=1 | sha256sum```
+
 ## Nextcloud server patch
 The app provides a custom CSP which the Nextcloud server currently does not support. The following patch adds this customization support:
 ```patch
