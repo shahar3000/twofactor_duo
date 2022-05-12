@@ -23,13 +23,15 @@ namespace OCA\TwoFactorDuo\Provider;
 
 use OCA\TwoFactorDuo\Web;
 use OCP\AppFramework\Http\ContentSecurityPolicy;
+use OCP\Authentication\TwoFactorAuth\IActivatableByAdmin;
+use OCP\Authentication\TwoFactorAuth\IDeactivatableByAdmin;
 use OCP\Authentication\TwoFactorAuth\IProvider;
 use OCP\Authentication\TwoFactorAuth\IProvidesCustomCSP;
 use OCP\IConfig;
 use OCP\IUser;
 use OCP\Template;
 
-class DuoProvider implements IProvider, IProvidesCustomCSP {
+class DuoProvider implements IProvider, IProvidesCustomCSP, IActivatableByAdmin, IDeactivatableByAdmin {
 
 	/** @var IConfig */
 	private $config;
@@ -66,7 +68,7 @@ class DuoProvider implements IProvider, IProvidesCustomCSP {
 	 * @return string
 	 */
 	public function getDescription() : string {
-		return 'Duo';
+		return 'Duo Second factor Authentication';
 	}
 
 	/**
@@ -121,12 +123,18 @@ class DuoProvider implements IProvider, IProvidesCustomCSP {
 
 	/**
 	 * Decides whether 2FA is enabled for the given user
+	 * By default, it is disabled for all users.
 	 *
 	 * @param IUser $user
 	 * @return boolean
 	 */
 	public function isTwoFactorAuthEnabledForUser(IUser $user) : bool {
-		return true;
+		return false;
 	}
-
+	
+	public function enableFor(IUser $user) {
+	}
+	
+	public function disableFor(IUser $user) {
+	}
 }
