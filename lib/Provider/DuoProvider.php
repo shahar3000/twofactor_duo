@@ -59,7 +59,7 @@ class DuoProvider implements IProvider, IProvidesCustomCSP, IActivatableByAdmin,
 	 * @return string
 	 */
 	public function getDisplayName() : string {
-		return 'Duo';
+		return 'Duo (Authenticator app)';
 	}
 
 	/**
@@ -68,7 +68,7 @@ class DuoProvider implements IProvider, IProvidesCustomCSP, IActivatableByAdmin,
 	 * @return string
 	 */
 	public function getDescription() : string {
-		return 'Duo Second factor Authentication';
+		return 'Get push notification or authentication code from the Duo app on your device.';
 	}
 
 	/**
